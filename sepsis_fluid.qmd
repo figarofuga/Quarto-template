@@ -1,0 +1,9 @@
+---
+title: "Fluid therapy for septic shock"
+format: typst
+bibliography: sepsisreferences.bib
+---
+
+# Sepsisの輸液について
+まずはガイドラインから
+[@Evans2021-se]
