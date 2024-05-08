@@ -1,6 +1,7 @@
 ---
 title: "Fluid therapy for septic shock"
 format: typst
+author: "Nozomi Niimi"
 bibliography: sepsisreferences.bib
 ---
 
