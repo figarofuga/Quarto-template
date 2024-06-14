@@ -1,12 +1,11 @@
 ---
-title: "fda"
-format: pdf
-pdf-engine: xelatex
-documentclass: bxjsbook
-classoption: xelatex,ja=standard
-editor: visual
-bibliography: references.bib
+title: "Hello Typst!"
+format:
+  typst:
+    toc: true
+    section-numbering: 1.1.a
+    columns: 2
 ---
 ## NTMとは
 
-NTMとは結核ではない抗酸菌の一種であり、MAC, M.kansasii, RGMなどが有名である。[@Ketata2015]
+NTMとは結核ではない抗酸菌の一種であり、MAC, M.kansasii, RGMなどが有名である。
