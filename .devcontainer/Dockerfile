@@ -6,13 +6,17 @@ RUN apt-get update && apt-get install -y \
   wget \
   git \
   curl \
+  unzip \
+  build-essential \
+  pkg-config \
+  libssl-dev \
   fonts-noto-cjk \
   fonts-ipafont-gothic \
   fonts-ipafont-mincho \
   fonts-unfonts-core \
 #   texlive-xetex \
-#   texlive-lang-cjk && \
-  rm -rf /var/lib/apt/lists/*
+#   texlive-lang-cjk \
+  && rm -rf /var/lib/apt/lists/*
 
 # # Install Quarto
 # ARG QUARTO_VERSION="1.4.0"
@@ -20,12 +24,16 @@ RUN apt-get update && apt-get install -y \
 #     dpkg -i quarto-${QUARTO_VERSION}-linux-amd64.deb && \
 #     rm quarto-${QUARTO_VERSION}-linux-amd64.deb
 
-# Install Typst
-RUN curl -L https://github.com/typst/typst/releases/latest/download/typst-linux-x86_64.zip -o typst.zip && \
-    unzip typst.zip -d typst && \
-    mv typst/typst /usr/local/bin/typst && \
-    rm -r typst typst.zip
+# Install Rust and Cargo
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH=/root/.cargo/bin:$PATH
+
+# Clone Typst repository and build
+RUN git clone https://github.com/typst/typst.git && \
+    cd typst && \
+    cargo build --release && \
+    mv target/release/typst /usr/local/bin/typst && \
+    cd .. && rm -rf typst
 
 # Verify installations
-RUN quarto check install && \
-    typst --version
+RUN typst --version
