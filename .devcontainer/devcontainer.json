@@ -1,17 +1,23 @@
 {
-    "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
+    "name": "Quarto and Typst Dev Container",
+    "build": {
+      "dockerfile": "Dockerfile"
+    },
     "features": {
-        "ghcr.io/rocker-org/devcontainer-features/rstudio-server": {}
+      "ghcr.io/devcontainers/features/node:1": {
+        "version": "lts"
+      },
+      // "ghcr.io/devcontainers/features/python:1": {
+        // "version": "3.9"
+      // }
     },
-    "postAttachCommand": {
-        "rstudio-start": "rserver"
-    },
-    "forwardPorts": [
-        8787
-    ],
-    "portsAttributes": {
-        "8787": {
-            "label": "RStudio IDE"
-        }
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "quarto.quarto",
+          "typst.typst"
+        ]
+      }
     }
-}
+  }
+  
