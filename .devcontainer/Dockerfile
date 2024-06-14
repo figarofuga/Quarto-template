@@ -14,15 +14,13 @@ RUN apt-get update && apt-get install -y \
   fonts-ipafont-gothic \
   fonts-ipafont-mincho \
   fonts-unfonts-core \
-#   texlive-xetex \
-#   texlive-lang-cjk \
   && rm -rf /var/lib/apt/lists/*
 
 # # Install Quarto
-# ARG QUARTO_VERSION="1.4.0"
-# RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb && \
-#     dpkg -i quarto-${QUARTO_VERSION}-linux-amd64.deb && \
-#     rm quarto-${QUARTO_VERSION}-linux-amd64.deb
+ARG QUARTO_VERSION="1.4.555"
+RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb && \
+    dpkg -i quarto-${QUARTO_VERSION}-linux-amd64.deb && \
+    rm quarto-${QUARTO_VERSION}-linux-amd64.deb
 
 # Install Rust and Cargo
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -34,6 +32,14 @@ RUN git clone https://github.com/typst/typst.git && \
     cargo build --release && \
     mv target/release/typst /usr/local/bin/typst && \
     cd .. && rm -rf typst
+
+RUN apt-get update && apt-get install -y curl fontconfig unzip \
+    && curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
+    && mkdir -p /usr/share/fonts/NotoSansCJKjp \
+    && unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/NotoSansCJKjp/ \
+    && rm NotoSansCJKjp-hinted.zip \
+    && fc-cache -fv
+
 
 # Verify installations
 RUN typst --version
