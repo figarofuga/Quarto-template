@@ -1,11 +1,18 @@
 ---
-title: "Hello Typst!"
-format:
-  typst:
-    toc: true
-    section-numbering: 1.1.a
-    columns: 2
----
-## NTMとは
+title: "Habits"
+author: "John Doe"
+format: 
+  revealjs: 
+    theme: mytheme.scss
 
-NTMとは結核ではない抗酸菌の一種であり、MAC, M.kansasii, RGMなどが有名である。
+---
+
+## こんにちは {.slide1}
+
+- Turn off alarm
+- Get out of bed
+
+## こんばんは {.slide2}
+
+- Get in bed
+- Count sheep
