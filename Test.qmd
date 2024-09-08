@@ -7,12 +7,12 @@ format:
 
 ---
 
-## こんにちは {.slide1}
+## こんにちは {.baseline-slide}
 
 - Turn off alarm
 - Get out of bed
 
-## こんばんは {.slide2}
+## こんばんは {.figure-slide}
 
 - Get in bed
 - Count sheep

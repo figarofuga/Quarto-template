@@ -33,13 +33,5 @@ RUN git clone https://github.com/typst/typst.git && \
     mv target/release/typst /usr/local/bin/typst && \
     cd .. && rm -rf typst
 
-RUN apt-get update && apt-get install -y curl fontconfig unzip \
-    && curl -O https://noto-website.storage.googleapis.com/pkgs/NotoSansCJKjp-hinted.zip \
-    && mkdir -p /usr/share/fonts/NotoSansCJKjp \
-    && unzip NotoSansCJKjp-hinted.zip -d /usr/share/fonts/NotoSansCJKjp/ \
-    && rm NotoSansCJKjp-hinted.zip \
-    && fc-cache -fv
-
-
 # Verify installations
 RUN typst --version
