@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 # # Install Quarto
-ARG QUARTO_VERSION="1.4.555"
+ARG QUARTO_VERSION="1.5.57"
 RUN wget https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb && \
     dpkg -i quarto-${QUARTO_VERSION}-linux-amd64.deb && \
     rm quarto-${QUARTO_VERSION}-linux-amd64.deb
